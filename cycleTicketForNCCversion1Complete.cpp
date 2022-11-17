@@ -1,8 +1,6 @@
 //
 // Created by Htet Aung Khant on 11/9/2022.
 //
-// versoin 1 very good code (lol)
-
 #include "iostream"
 #include "sstream"
 #include "cycleTicketForNCC.h"
@@ -143,20 +141,25 @@ void CycleTicketForNCC::luckyNum(){
 //                    cout << _avNum[k] << " ";
 //                }
 
-                cout << endl << "Enter 1 to add lucky number || Enter 2 to pay for lucky number : ";
-                cin >> option;
+                while (true) {
 
-                if (option == "1") {
-                    luckyNumberIdx++;
-                    tempLuckyNumberIdx++;
-        //            cout<<"luckyNumberIdx = "<<luckyNumberIdx<<endl;  // to delete just test
-                    size--;
-        //            cout<<"size is = "<<size<<endl;  // to delete just test
-                    luckyNum();
-                } else if (option == "2") {
-                    dataToFile(); // စမ်းထားတာ ဖျက်ရန်
-                    // to add ငွေချေ function
-                    paymentFun();
+                    cout << endl << "Enter 1 to add lucky number || Enter 2 to pay for lucky number : ";
+                    cin >> option;
+
+                    if (option == "1") {
+                        luckyNumberIdx++;
+                        tempLuckyNumberIdx++;
+                        //            cout<<"luckyNumberIdx = "<<luckyNumberIdx<<endl;  // to delete just test
+                        size--;
+                        //            cout<<"size is = "<<size<<endl;  // to delete just test
+                        luckyNum();
+                    } else if (option == "2") {
+                        dataToFile(); // စမ်းထားတာ ဖျက်ရန်
+                        // to add ငွေချေ function
+                        paymentFun();
+                    } else{
+                        cout<<"Please choose option carefully!!!"<<endl;
+                    }
                 }
             }
         }
@@ -199,7 +202,7 @@ void CycleTicketForNCC::paymentFun(){
     cin>>userAddress;
 
     int couponAmount=luckyNumberIdx+1;
-    cout<<"justTest"<<couponAmount<<endl; // to delete just test
+//    cout<<"justTest"<<couponAmount<<endl; // to delete just test
     userPayment = couponPrice*couponAmount;
 
     while(true) {
@@ -272,7 +275,7 @@ void CycleTicketForNCC::askFun(){
             size--;
             luckyNum();
         } else {
-            cout<<"Please choose carefully!";
+            cout<<"Please choose carefully!!";
         }
     }
 
@@ -317,8 +320,7 @@ void CycleTicketForNCC::allUserInfo(){
         ss << _luckyNum[i]<<",";
     }
 
-    cout<<ss.str()<<endl;
-
+//    cout<<ss.str()<<endl;
 
     string userData = "usersInfo.txt";
     ofstream userInfoFile(userData,ios::app);
